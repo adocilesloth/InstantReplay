@@ -1,4 +1,4 @@
-#Instant Replay
+# Instant Replay
 
 Plugin to allow Instant Replays  
 It basically combines the "Automatic Scene Switching" and "Per Scene Volume"  
