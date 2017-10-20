@@ -1,6 +1,5 @@
-/************************************  
-A Docile Sloth adocilesloth@gmail.com  
-************************************/  
+#Instant Replay
+
 Plugin to allow Instant Replays  
 It basically combines the "Automatic Scene Switching" and "Per Scene Volume"  
 (from OBS Classic) plugins to allow instant replays in live streams.  
