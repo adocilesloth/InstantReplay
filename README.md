@@ -56,7 +56,9 @@ frames by 16.
 OBS does not always write as much replay as you tell it 
 to so this may need to be a second or two shorter than 
 the buffer length  
-`Replay Scene` - Scene to switch to that has the replay source.  
+`Replay Scene` - Scene to switch to that has the replay source. 
+`Mute Desktop Audio` - Mute the Desktop Audio channels when replay is playing.
+`Mute Mic/AUX` - Mute the Mic/Aux channels when replay is playing.
 
 Hit "OK"  
 
@@ -70,8 +72,3 @@ Setting up the replay source:
 	Set your Recording to a constant name (so remove all the % stuff). Makes it  
 	easy to point your replay source to a file that will exist.  
 	Point your Media Source to what your replay will be saved as.  
-	
-Notes:  
-	When the Instant Replay is active, the Aux (microphones and the like) and  
-	Desktop audio will be muted. They will then unmute when the scene switches  
-	back.  

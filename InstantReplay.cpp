@@ -63,10 +63,16 @@ void replayThread()
 
 			//mute mic and desktop
 			bool chan1, chan2, chan3, chan4, chan5;
-			get_desktop_mute(chan1, chan2);
-			get_aux_mute(chan3, chan4, chan5);
-			set_desktop_mute(true);
-			set_aux_mute(true);
+			if(get_D_mute())
+			{
+				get_desktop_mute(chan1, chan2);
+				set_desktop_mute(true);
+			}
+			if(get_A_mute())
+			{
+				get_aux_mute(chan3, chan4, chan5);
+				set_aux_mute(true);
+			}
 
 			//Wait for replay to finish
 			int replay_time = get_replay() - (2 * pause);
@@ -81,8 +87,14 @@ void replayThread()
 			psleep(pause);
 
 			//unmute mic and desktop
-			set_desktop_mute(chan1, chan2);
-			set_aux_mute(chan3, chan4, chan5);
+			if(get_D_mute())
+			{
+				set_desktop_mute(chan1, chan2);
+			}
+			if(get_A_mute())
+			{
+				set_aux_mute(chan3, chan4, chan5);
+			}
 
 			doReplay = false;
 		}

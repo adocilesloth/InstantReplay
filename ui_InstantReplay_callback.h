@@ -35,6 +35,11 @@ public:
 	QLabel *sourceLabel;
 	QLineEdit *sourceLineEdit;
 
+	QLabel *muteDLabel;
+	QCheckBox *muteDCheck;
+	QLabel *muteALabel;
+	QCheckBox *muteACheck;
+
 	QDialogButtonBox *closeButton;
 
 	void setupUi(QDialog *replayCallout)
@@ -96,19 +101,28 @@ public:
 		sceneLineEdit->setText("Replay Scene");
 		replayLayout->addWidget(sceneLineEdit, 4, 2, 1, 2);
 
-		/*sourceLabel = new QLabel(replayCallout);
-		sourceLabel->setObjectName(QStringLiteral("sourceLabel"));
-		replayLayout->addWidget(sourceLabel, 5, 1, 1, 1);
+		muteDLabel = new QLabel(replayCallout);
+		muteDLabel->setObjectName(QStringLiteral("muteDLabel"));
+		replayLayout->addWidget(muteDLabel, 5, 1, 1, 1);
 
-		sourceLineEdit = new QLineEdit(replayCallout);
-		sourceLineEdit->setObjectName(QStringLiteral("sourceLineEdit"));
-		sourceLineEdit->setText("Replay Source");
-		replayLayout->addWidget(sourceLineEdit, 5, 2, 1, 2);*/
+		muteDCheck = new QCheckBox(replayCallout);
+		muteDCheck->setObjectName(QStringLiteral("muteDCheck"));
+		muteDCheck->setChecked(true);
+		replayLayout->addWidget(muteDCheck, 5, 2, 1, 2);
+
+		muteALabel = new QLabel(replayCallout);
+		muteALabel->setObjectName(QStringLiteral("muteALabel"));
+		replayLayout->addWidget(muteALabel, 6, 1, 1, 1);
+
+		muteACheck = new QCheckBox(replayCallout);
+		muteACheck->setObjectName(QStringLiteral("muteACheck"));
+		muteACheck->setChecked(true);
+		replayLayout->addWidget(muteACheck, 6, 2, 1, 2);
 
 		closeButton = new QDialogButtonBox(replayCallout);
 		closeButton->setObjectName(QStringLiteral("buttonBox"));
 		closeButton->setStandardButtons(QDialogButtonBox::Close);
-		replayLayout->addWidget(closeButton, 5, 3, 1, 1);
+		replayLayout->addWidget(closeButton, 7, 3, 1, 1);
 
 		retranslateUi(replayCallout);
 
@@ -123,7 +137,8 @@ public:
 		pauseLabel->setText(QApplication::translate("replayCallout", "TransitionPause", Q_NULLPTR));
 		replayLabel->setText(QApplication::translate("replayCallout", "ReplayLength", Q_NULLPTR));
 		sceneLabel->setText(QApplication::translate("replayCallout", "ReplayScene", Q_NULLPTR));
-		//sourceLabel->setText(QApplication::translate("replayCallout", "Replay Source", Q_NULLPTR));
+		muteDLabel->setText(QApplication::translate("replayCallout", "MuteDesktop", Q_NULLPTR));
+		muteALabel->setText(QApplication::translate("replayCallout", "MuteAux", Q_NULLPTR));
 	}
 };
 

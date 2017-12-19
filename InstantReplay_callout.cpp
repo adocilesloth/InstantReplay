@@ -35,6 +35,16 @@ std::string get_scene()
 	return co->ui->sceneLineEdit->text().toStdString();
 }
 
+bool get_D_mute()
+{
+	return co->ui->muteDCheck->isChecked();
+}
+
+bool get_A_mute()
+{
+	return co->ui->muteACheck->isChecked();
+}
+
 replayCallout::replayCallout(QWidget *parent)
 	: QDialog(parent),
 	ui(new Ui_replayCallout)
@@ -77,6 +87,8 @@ static void save_replay_callout(obs_data_t *save_data, bool saving, void *)
 		qstr = co->ui->sceneLineEdit->text();
 		str = qstr.toStdString();
 		obs_data_set_string(obj, "scene", str.c_str());
+		obs_data_set_bool(obj, "Dmute", co->ui->muteDCheck->isChecked());
+		obs_data_set_bool(obj, "Amute", co->ui->muteACheck->isChecked());
 
 		obs_data_set_obj(save_data, "replayCallout_data", obj);
 
@@ -96,6 +108,8 @@ static void save_replay_callout(obs_data_t *save_data, bool saving, void *)
 		co->ui->replaySpinBox->setValue(obs_data_get_int(obj, "replay"));
 		qstr = QString::fromLocal8Bit(obs_data_get_string(obj, "scene"));
 		co->ui->sceneLineEdit->setText(qstr);
+		co->ui->muteDCheck->setChecked(obs_data_get_bool(obj, "Dmute"));
+		co->ui->muteACheck->setChecked(obs_data_get_bool(obj, "Amute"));
 		
 		obs_data_release(obj);
 	}

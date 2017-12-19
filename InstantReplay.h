@@ -15,4 +15,6 @@ int get_wait();
 int get_pause();
 int get_replay();
 std::string get_scene();
+bool get_D_mute();
+bool get_A_mute();
 void replay_callout_init();
