@@ -12,22 +12,26 @@ Drag and drop obs-studio folder into C:\Program Files
 Merge all files down and you should be good to go.  
 
 **===LINUX===**  
-Dependancies:  
+Dependencies:  
 OBS (duh)  
-Qt5 dev  
+Qt5 dev
+CMake 
 
 Clone the git repo:  
 	`git clone https://github.com/adocilesloth/InstantReplay.git`  
 	
 cd to where you downloaded the source  
 
-Check the environment PATHS in Makefile  
+Check the OBS environment PATHS in CMakeLists.txt
 	Make sure they match your OBS and Qt5 installations and fix if necessary.  
 	(`OBS_API_INCLUDE` will not need updating as the files are in the git repo)  
   
 Then run:  
 ```
-make  
+mkdir -p build
+cd build
+cmake ..
+make
 make install  
 make clean (optional: if you want to remove the temporary .o and .so files)  
 ```
