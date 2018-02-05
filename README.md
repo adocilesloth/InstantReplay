@@ -13,9 +13,9 @@ Merge all files down and you should be good to go.
 
 **===LINUX===**  
 Dependencies:  
-OBS (duh)  
-Qt5 dev
-CMake 
+* OBS (duh)
+* Qt5 dev
+* CMake
 
 Clone the git repo:  
 	`git clone https://github.com/adocilesloth/InstantReplay.git`  
