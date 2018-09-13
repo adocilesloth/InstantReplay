@@ -40,13 +40,21 @@ public:
 	QLabel *muteALabel;
 	QCheckBox *muteACheck;
 
+	QLabel *enableBackupLabel;
+	QCheckBox *enableBackupCheck;
+	QLabel *filePathBackupLabel;
+	QLineEdit *filePathBackupEdit;
+
+	QLabel *replaySourceNameLabel;
+	QLineEdit *replaySourceNameEdit;
+
 	QDialogButtonBox *closeButton;
 
 	void setupUi(QDialog *replayCallout)
 	{
 		if(replayCallout->objectName().isEmpty())
 			replayCallout->setObjectName(QStringLiteral("InstantReplay"));
-		replayCallout->resize(200, 200);
+		replayCallout->resize(300, 300);
 		replayLayout = new QGridLayout(replayCallout);
 		replayLayout->setObjectName(QStringLiteral("replayLayout"));
 
@@ -116,13 +124,41 @@ public:
 
 		muteACheck = new QCheckBox(replayCallout);
 		muteACheck->setObjectName(QStringLiteral("muteACheck"));
-		muteACheck->setChecked(true);
+		muteACheck->setChecked(false);
 		replayLayout->addWidget(muteACheck, 6, 2, 1, 2);
+
+		enableBackupLabel = new QLabel(replayCallout);
+		enableBackupLabel->setObjectName(QStringLiteral("enableBackupLabel"));
+		replayLayout->addWidget(enableBackupLabel, 7, 1, 1, 1);
+
+		enableBackupCheck = new QCheckBox(replayCallout);
+		enableBackupCheck->setObjectName(QStringLiteral("enableBackupCheck"));
+		enableBackupCheck->setChecked(false);
+		replayLayout->addWidget(enableBackupCheck, 7, 2, 1, 2);
+
+		filePathBackupLabel = new QLabel(replayCallout);
+		filePathBackupLabel->setObjectName(QStringLiteral("filePathBackupLabel"));
+		replayLayout->addWidget(filePathBackupLabel, 8, 1, 1, 1);
+
+		filePathBackupEdit = new QLineEdit(replayCallout);
+		filePathBackupEdit->setObjectName(QStringLiteral("filePathBackupEdit"));
+		filePathBackupEdit->setText("Replay Scene");
+		replayLayout->addWidget(filePathBackupEdit, 8, 2, 1, 2);
+
+		replaySourceNameLabel = new QLabel(replayCallout);
+		replaySourceNameLabel->setObjectName(QStringLiteral("replaySourceNameLabel"));
+		replayLayout->addWidget(replaySourceNameLabel, 9, 1, 1, 1);
+
+		replaySourceNameEdit = new QLineEdit(replayCallout);
+		replaySourceNameEdit->setObjectName(QStringLiteral("replaySourceNameEdit"));
+		replaySourceNameEdit->setText("Instant Replay Media Source");
+		replayLayout->addWidget(replaySourceNameEdit, 9, 2, 1, 2);
+
 
 		closeButton = new QDialogButtonBox(replayCallout);
 		closeButton->setObjectName(QStringLiteral("buttonBox"));
 		closeButton->setStandardButtons(QDialogButtonBox::Close);
-		replayLayout->addWidget(closeButton, 7, 3, 1, 1);
+		replayLayout->addWidget(closeButton, 10, 3, 1, 1);
 
 		retranslateUi(replayCallout);
 
@@ -139,6 +175,9 @@ public:
 		sceneLabel->setText(QApplication::translate("replayCallout", "ReplayScene", Q_NULLPTR));
 		muteDLabel->setText(QApplication::translate("replayCallout", "MuteDesktop", Q_NULLPTR));
 		muteALabel->setText(QApplication::translate("replayCallout", "MuteAux", Q_NULLPTR));
+		enableBackupLabel->setText(QApplication::translate("replayCallout", "EnableBackup", Q_NULLPTR));
+		filePathBackupLabel->setText(QApplication::translate("replayCallout", "BackupFilePath", Q_NULLPTR));
+		replaySourceNameLabel->setText(QApplication::translate("replayCallout", "ReplaySourceName", Q_NULLPTR));
 	}
 };
 

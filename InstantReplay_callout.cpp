@@ -45,6 +45,22 @@ bool get_A_mute()
 	return co->ui->muteACheck->isChecked();
 }
 
+bool get_backup_enabled()
+{
+	return co->ui->enableBackupCheck->isChecked();
+}
+
+std::string get_backup_path()
+{
+	return co->ui->filePathBackupEdit->text().toStdString();
+}
+
+std::string get_replay_source_name()
+{
+	return co->ui->replaySourceNameEdit->text().toStdString();
+}
+
+
 replayCallout::replayCallout(QWidget *parent)
 	: QDialog(parent),
 	ui(new Ui_replayCallout)
@@ -90,6 +106,19 @@ static void save_replay_callout(obs_data_t *save_data, bool saving, void *)
 		obs_data_set_bool(obj, "Dmute", co->ui->muteDCheck->isChecked());
 		obs_data_set_bool(obj, "Amute", co->ui->muteACheck->isChecked());
 
+	
+		// Instant Replay XT extended settings
+		obs_data_set_bool(obj, "backup", co->ui->enableBackupCheck->isChecked());
+		
+		qstr = co->ui->filePathBackupEdit->text();
+		str = qstr.toStdString();
+		obs_data_set_string(obj, "backupPath", str.c_str());
+
+		qstr = co->ui->replaySourceNameEdit->text();
+		str = qstr.toStdString();
+		obs_data_set_string(obj, "sourceName", str.c_str());
+		//---
+
 		obs_data_set_obj(save_data, "replayCallout_data", obj);
 
 		obs_data_release(obj);
@@ -111,6 +140,14 @@ static void save_replay_callout(obs_data_t *save_data, bool saving, void *)
 		co->ui->muteDCheck->setChecked(obs_data_get_bool(obj, "Dmute"));
 		co->ui->muteACheck->setChecked(obs_data_get_bool(obj, "Amute"));
 		
+		// Instant Replay XT extended settings
+		co->ui->enableBackupCheck->setChecked(obs_data_get_bool(obj, "backup"));
+		qstr = QString::fromLocal8Bit(obs_data_get_string(obj, "backupPath"));
+		co->ui->filePathBackupEdit->setText(qstr);
+		qstr = QString::fromLocal8Bit(obs_data_get_string(obj, "sourceName"));
+		co->ui->replaySourceNameEdit->setText(qstr);
+		//---
+
 		obs_data_release(obj);
 	}
 }
