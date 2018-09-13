@@ -5,19 +5,19 @@ It basically combines the "Automatic Scene Switching" and "Per Scene Volume"
 (from OBS Classic) plugins to allow instant replays in live streams.  
 
 
-Instant Replay XT. Improved and extended version by [spreadfire1](https://steemit.com/@spreadfire1).
+**Instant Replay XT**. Improved and extended version by [spreadfire1](https://steemit.com/@spreadfire1).
 - Backup feature: Option to copy replay files to another folder.
 - Replay Buffer Filename no longer has to be static. The plugin sets the Instant Replay Media Source to the current replay file before switching to the replay scene.
 - No longer mandatory fixed pause waiting for the replay buffer file to write. Checking every second and switches as soon as the file is ready.
 
-**===WINDOWS===**  
+## ===WINDOWS===
 Windows is built and working for both 32bit and 64bit  
 
 Drag and drop obs-studio folder into C:\Program Files  
 (or wher ever you have obs-studio installed)  
 Merge all files down and you should be good to go.  
 
-**===LINUX===**  
+## ===LINUX===
 Dependancies:  
 OBS (duh)  
 Qt5 dev  
@@ -38,13 +38,13 @@ make install
 make clean (optional: if you want to remove the temporary .o and .so files)  
 ```
 
-**===MAC===**  
+## ===MAC=== 
 Uh, sould work. Probably. Don't have a MAC to test with.  
 So...  
 You can try the LINUX instructions.  
 Let me know if you get it to work!  
 
-**===SETUP===**  
+## ===SETUP===
 Open the settings popup under:  
 `Tools -> Instant Replay Settings`  
 	
@@ -72,9 +72,11 @@ the buffer length
 
 `Mute Mic/AUX` - Mute the Mic/Aux channels when replay is playing.
 
-**XT settings**
+### New XT settings
 `Backup Replay File` - Enables/disables the backup feature.
+
 `Backup File Path` - After the replay file buffer was written, copy it to this path.
+
 `Replay Source Name` - Name of the OBS Media Source you use to play the Instant Replay file. e.g. "Instant Replay Media Source".
 
 
