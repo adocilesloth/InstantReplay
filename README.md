@@ -50,21 +50,26 @@ Open the settings popup under:
 	
 Fill in the below settings:  
 `Enable` - Enables/disables the plugin
+
 `Write Pause (s)` - Pause to allow OBS to write the replay file. 
 OBS can't instantly write a file. ~10 seconds should be okay. 
-Find something that works for you  
+Find something that works for you.
 (Functionality change in *Instant Replay XT*: Write Pause is the maximum amount of seconds you want to wait. If the replay file buffer was written before that, it switches to the Instant Replay scene immediately.)
+
 `Transition Pause (ms)` - Length of the transition in milliseconds. 
 If the stinger is at 30fps, multiply the number of 
 frames by 33. 
 If the stinger is at 60fps, multiply the number of 
-frames by 16.  
+frames by 16.
+
 `Replay Length (s)` - Length of the replay in seconds. 
 OBS does not always write as much replay as you tell it 
 to so this may need to be a second or two shorter than 
 the buffer length  
-`Replay Scene` - Scene to switch to that has the replay source. 
+`Replay Scene` - Scene to switch to that has the replay source.
+
 `Mute Desktop Audio` - Mute the Desktop Audio channels when replay is playing.
+
 `Mute Mic/AUX` - Mute the Mic/Aux channels when replay is playing.
 
 **XT settings**
@@ -81,7 +86,9 @@ Open the Hotkeys under:
 Find the `Instant Replay` hotkey  
 Set it TO THE SAME KEY as you have `Save Replay` under `Replay Buffer` set to.  
 
-**Deprecated**
+---
+
+**Deprecated**: 
 This is no longer necessary in *Instant Replay XT*. The plugin sets the Instant Replay Media Source to the currently active replay file before switching to the replay scene.
 > Setting up the replay source:  
 >	Set your Recording to a constant name (so remove all the % stuff). Makes it  
