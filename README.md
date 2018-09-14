@@ -10,6 +10,8 @@ It basically combines the "Automatic Scene Switching" and "Per Scene Volume"
 - Replay Buffer Filename no longer has to be static. The plugin sets the Instant Replay Media Source to the current replay file before switching to the replay scene.
 - No longer mandatory fixed pause waiting for the replay buffer file to write. Checking every second and switches as soon as the file is ready.
 
+[Tutorial](https://github.com/spreadfire/InstantReplayXT/blob/master/Tutorial/Tutorial.md) on how to set up and use it.
+
 ## ===WINDOWS===
 Windows is built and working for both 32bit and 64bit  
 
