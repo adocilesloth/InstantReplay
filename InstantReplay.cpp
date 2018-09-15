@@ -124,7 +124,6 @@ void replayThread()
 						std::string replay_path = calldata_string(cd, "path");
 
 						calldata_destroy(cd);
-						obs_output_release(replay_output);
 
 						if (replay_path.empty())
 						{
@@ -148,7 +147,7 @@ void replayThread()
 									dest_file.replace(0,dest_file.rfind("/") + 1, backup_path); //replace folder, keep file name
 										
 									FindBestFilename(dest_file,true); //check if file exists and rename it
-									info("'%s' to '%s'. %s", replay_path.c_str(), backup_path.c_str(), dest_file.c_str());
+									info("backup replay file '%s' to '%s'. %s", replay_path.c_str(), backup_path.c_str(), dest_file.c_str());
 
 									fs::copy_file(replay_path, dest_file);
 								}
@@ -157,7 +156,7 @@ void replayThread()
 								}
 								catch (...)
 								{
-									warn("replay file '%s', backup path '%s', destination file '%s'", replay_path.c_str(), backup_path.c_str(),dest_file.c_str());
+									warn("exception on backup replay file '%s', backup path '%s', destination file '%s'", replay_path.c_str(), backup_path.c_str(),dest_file.c_str());
 								}
 							}
 
@@ -245,7 +244,8 @@ void replayThread()
 					warn("Tried to save an instant replay, but the replay buffer is not active!");
 				}
 
-
+				proc_handler_destroy(ph);
+				obs_output_release(replay_output);
 			}
 			else
 			{
