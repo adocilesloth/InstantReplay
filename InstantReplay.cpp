@@ -85,7 +85,6 @@ void psleep(unsigned milliseconds)
 }
 #endif
 
-
 void replayThread()
 {
 	while(true)
@@ -108,8 +107,8 @@ void replayThread()
 			if (replay_output != NULL)
 			{
 				proc_handler_t* ph = obs_output_get_proc_handler(replay_output);				
-
-				proc_handler_call(ph, "save", NULL);
+				//if (ph!=NULL)
+				//	proc_handler_call(ph, "save", NULL); //call not necessary, since the replay buffer is saved on the same hotkey button press that InstantReplay is called with
 
 				//attempt playback every 1 second
 				//until the replay is available (or until maximum wait time passed)
@@ -119,17 +118,37 @@ void replayThread()
 					while ((attempts <= wait) && doReplay)
 					{
 						psleep(1000);
+						string replay_path="";
+						const char * cRP;
+						info("get_last_replay path attempt %d", attempts);
+						
 						calldata_t* cd = calldata_create();
-						proc_handler_call(ph, "get_last_replay", cd);
-						std::string replay_path = calldata_string(cd, "path");
+						if (proc_handler_call(ph, "get_last_replay", cd) && cd != NULL)
+						{
+							try
+							{
+								calldata_get_string(cd, "path", &cRP);
+								if (cRP)
+									replay_path = cRP;
+								//replay_path = calldata_string(cd, "path");
+							}
+							catch (...)
+							{
+								warn("exception on calldata_get_string");
+							}
 
-						calldata_destroy(cd);
-
+						}
+						calldata_free(cd);
 						if (replay_path.empty())
 						{
+							info("get_last_replay path was empty on attempt %d", attempts);
+
 							attempts++;
 							if (attempts > wait)
+							{
 								doReplay = false;
+								info("stop retrying after maximum number of attempts reached: %d", attempts);
+							}
 
 						}
 						else
@@ -234,8 +253,8 @@ void replayThread()
 							{
 								set_aux_mute(chan3, chan4, chan5);
 							}
-
 							doReplay = false;
+							info("Successfully finished");
 						}
 					}
 				}
@@ -243,15 +262,12 @@ void replayThread()
 				{
 					warn("Tried to save an instant replay, but the replay buffer is not active!");
 				}
-
-				proc_handler_destroy(ph);
-				obs_output_release(replay_output);
 			}
 			else
 			{
-				warn("No active replay buffer output existing!");				
+				warn("No active replay buffer output existing!");
 			}
-
+			obs_output_release(replay_output);
 		}
 	}
 }
@@ -270,6 +286,7 @@ void instant_replay_hotkey(void *data, obs_hotkey_id id, obs_hotkey_t *hotkey, b
 
 	if(pressed && obs_frontend_replay_buffer_active())
 	{
+		info("instant_replay_hotkey pressed and obs_frontend_replay_buffer_active");
 		doReplay = true;
 	}
 }
