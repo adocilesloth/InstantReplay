@@ -119,7 +119,7 @@ void replayThread()
 					{
 						psleep(1000);
 						string replay_path="";
-						const char * cRP;
+						const char * cRP=NULL;
 						info("get_last_replay path attempt %d", attempts);
 						
 						calldata_t* cd = calldata_create();
@@ -138,6 +138,7 @@ void replayThread()
 							}
 
 						}
+						cRP=NULL;
 						calldata_free(cd);
 						if (replay_path.empty())
 						{
