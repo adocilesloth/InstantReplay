@@ -21,15 +21,15 @@ void obs_module_unload(void)
 
 const char *obs_module_author(void)
 {
-	return "A Docile Sloth";
+	return "A Docile Sloth & spreadfire1";
 }
 
 const char *obs_module_name(void)
 {
-	return "Instant Replay";
+	return "Instant Replay XT";
 }
 
 const char *obs_module_description(void)
 {
-	return "Scene switching support for instant replays";
+	return "Extended Edition. Scene switching support for instant replays";
 }
