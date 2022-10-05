@@ -4,7 +4,8 @@
 #include <obs-module.h>
 #include <QtWidgets/QMainWindow>
 #include <QtWidgets/QMessageBox>
-#include <QtWidgets/QAction>
+//#include <QtWidgets/QAction>
+#include <QtWidgets/qaction.h>
 
 #include <sstream>
 

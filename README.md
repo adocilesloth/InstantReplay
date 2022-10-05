@@ -5,7 +5,7 @@ It basically combines the "Automatic Scene Switching" and "Per Scene Volume"
 (from OBS Classic) plugins to allow instant replays in live streams.  
 
 **===WINDOWS===**  
-Windows is built and working for both 32bit and 64bit  
+Windows is built and working for 64bit  
 
 Drag and drop obs-studio folder into C:\Program Files  
 (or wher ever you have obs-studio installed)  
@@ -14,7 +14,7 @@ Merge all files down and you should be good to go.
 **===LINUX===**  
 Dependancies:  
 OBS (duh)  
-Qt5 dev  
+Qt6 dev  
 
 Clone the git repo:  
 	`git clone https://github.com/adocilesloth/InstantReplay.git`  
@@ -22,7 +22,7 @@ Clone the git repo:
 cd to where you downloaded the source  
 
 Check the environment PATHS in Makefile  
-	Make sure they match your OBS and Qt5 installations and fix if necessary.  
+	Make sure they match your OBS and Qt6 installations and fix if necessary.  
 	(`OBS_API_INCLUDE` will not need updating as the files are in the git repo)  
   
 Then run:  
@@ -31,6 +31,11 @@ make
 make install  
 make clean (optional: if you want to remove the temporary .o and .so files)  
 ```
+
+Ubuntu 22.04 is built and working for 64bit  
+
+Drag and drop obs-studio folder into ~/.config  
+Merge all files down and you should be goof to go.  
 
 **===MAC===**  
 Uh, sould work. Probably. Don't have a MAC to test with.  

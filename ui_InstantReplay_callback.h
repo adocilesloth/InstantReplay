@@ -1,6 +1,7 @@
 #pragma once
 #include <QtCore/QVariant>
-#include <QtWidgets/QAction>
+//#include <QtWidgets/QAction>
+#include <QtWidgets/qaction.h>
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QCheckBox>

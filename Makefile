@@ -12,19 +12,19 @@ ifndef OBS_SHARE
 OBS_SHARE = /usr/share/obs
 endif
 ifndef QT_INCLUDE
-QT_INCLUDE = $(HOME)/Qt/5.9.1/gcc_64/include
+QT_INCLUDE = $(HOME)/Qt6/6.2.4/gcc_64/include
 endif
 ifndef QT_LIB
-QT_LIB = $(HOME)/Qt/5.9.1/gcc_64/lib
+QT_LIB = $(HOME)/Qt6/6.2.4/gcc_64/lib
 endif
 #-#-#END MODIFY#-#-#
 
 CXX = g++
-CXXFLAGS = -g -Wall -std=c++11 -fPIC -DQT_NO_VERSION_TAGGING
+CXXFLAGS = -g -Wall -std=c++20 -fPIC -DQT_NO_VERSION_TAGGING
 
 INCLUDE = -I$(OBS_INCLUDE) -I$(OBS_API_INCLUDE) -I$(QT_INCLUDE)
 LDFLAGS = -L$(OBS_LIB) -L$(QT_LIB)
-LDLIBS_LIB   = -lobs -lQt5Widgets -lQt5Gui -lQt5Core
+LDLIBS_LIB   = -lobs -lQt6Widgets -lQt6Gui -lQt6Core
 
 LIB = InstantReplay.so
 LIB_OBJ = module-entrance.o InstantReplay.o InstantReplay_callout.o ui_InstantReplay_callout.o audio_io_state.o
@@ -54,10 +54,10 @@ audio_io_state.o: audio_io_state.cpp
 
 .PHONY: install
 install:
-	cp -f $(LIB) $(OBS_LIB)/obs-plugins/
-	mkdir -p /usr/share/obs/obs-plugins/InstantReplay
-	mkdir -p /usr/share/obs/obs-plugins/InstantReplay/locale
-	cp -f en-US.ini /usr/share/obs/obs-plugins/InstantReplay/locale/
+	mkdir -p $(HOME)/.config/obs-studio/plugins/InstantReplay/bin/64bit
+	mkdir -p $(HOME)/.config/obs-studio/plugins/InstantReplay/locale
+	cp $(LIB) $(HOME)/.config/obs-studio/plugins/InstantReplay/bin/64bit/
+	cp en-US.ini $(HOME)/.config/obs-studio/plugins/InstantReplay/locale/
 
 .PHONY: clean
 clean:
@@ -66,5 +66,4 @@ clean:
 
 .PHONY: uninstall
 uninstall:
-	rm $(OBS_LIB)/obs-plugins/$(LIB)
-	rm -r /usr/share/obs/obs-plugins/InstantReplay
+	rm -r $(HOME)/.config/obs-studio/plugins/InstantReplay

@@ -24,10 +24,10 @@
     <ClCompile Include="InstantReplay_callout.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="moc_InstantReplay_callout.cpp">
+    <ClCompile Include="audio_io_state.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="audio_io_state.cpp">
+    <ClCompile Include="moc_InstantReplay_callout.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
